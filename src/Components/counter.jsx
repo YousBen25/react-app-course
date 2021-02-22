@@ -7,7 +7,7 @@ class Counter extends Component {
   };
 
   handleIncrement = () => {
-    console.log("button clicked");
+    console.log("button clicked", this);
   }
 
   render() {
