@@ -4,7 +4,6 @@ import "./App.css";
 import Counters from "./Components/counters";
 import NavBar from "./Components/navbar";
 
-
 class App extends Component {
   state = {
     counters: [
@@ -39,7 +38,9 @@ class App extends Component {
   render() {
     return (
       <>
-        <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length} />
+        <NavBar
+          totalCounters={this.state.counters.filter((c) => c.value > 0).length}
+        />
         <main className="container">
           <Counters
             onReset={this.handleReset}
