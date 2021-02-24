@@ -13,14 +13,14 @@ class App extends Component {
       { id: 4, value: 0 },
     ],
   };
-  constructor(props) {
-    super(props);
-    console.log('App - Constructor', this.props);
-  };
 
-  componentDidMount() {
-    console.log('App - Mount');
-  }
+  handleDecrement = (counter) => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value--;
+    this.setState({ counters });
+  };
 
   handleIncrement = (counter) => {
     const counters = [...this.state.counters];
@@ -29,6 +29,7 @@ class App extends Component {
     counters[index].value++;
     this.setState({ counters });
   };
+
 
   handleReset = () => {
     const counters = this.state.counters.map((c) => {
@@ -44,7 +45,6 @@ class App extends Component {
   };
 
   render() {
-    console.log('App - Rendered');
     return (
       <>
         <NavBar
@@ -54,6 +54,7 @@ class App extends Component {
           <Counters
             onReset={this.handleReset}
             onDelete={this.handleDelete}
+            onDecrement={this.handleDecrement}
             onIncrement={this.handleIncrement}
             counters={this.state.counters}
           />
